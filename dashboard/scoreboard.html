@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+
+  <div class="form">
+
+    <div class="center">
+      <fieldset>
+        <div class="block third">
+          <label>Round</label>
+          <div class="center"><input type="text" id="round" name="round" value="Ro16" class="small"/></div>
+        </div>
+
+        <div class="block third center">
+          <label>Map</label>
+          <div class="center"><input type="text" id="map" name="map" value="MAPPOOL" class=""/></div>
+        </div>
+
+        <div class="block third center">
+          <label>Series</label>
+          <div class="center"><input type="text" id="series" name="series" value="Bo3" class="small"/></div>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="panels">
+
+      <div class="player">
+        <fieldset>
+          <legend>Player 1</legend>
+          <div class="row">
+            <label>Name:</label>
+            <div><input type="text" id="player1_name" name="player1_name" value="player 1" class="player_name"></div>
+          </div>
+
+          <div class="row">
+            <div class="block half">
+              <label>Spawn:</label>
+              <div><input type="text" id="player1_spawn" name="player1_spawn" value="i.e. P06" class="player_spawn"></div>
+            </div>
+
+            <div class="block half">
+              <label>Color:</label>
+              <div><input type="text" id="player1_color" name="player1_color" value="i.e. lightPink, etc." class="player_color"></div>
+            </div>
+          </div>
+
+        <div class="row">
+
+          <div class="block third">
+            <button onclick="subtract(player1Score)">-</button>
+          </div>
+
+          <div class="block third">
+            <input type="text" id="player1_score" name="player1_score" value="0" class="player_score">
+          </div>
+
+          <div class="block third">
+            <button onclick="add(player1Score)">+</button>
+          </div>
+
+        </div>
+        <div class="row">
+        </div>
+
+        </fieldset>
+      </div>
+
+
+      <div class="player">
+        <fieldset>
+          <legend>Player 2</legend>
+          <div class="row">
+            <label>Name:</label>
+            <div><input type="text" id="player2_name" name="player2_name" value="player 2" class="player_name"></div>
+          </div>
+
+          <div class="row">
+            <div class="block half">
+              <label>Spawn:</label>
+              <div><input type="text" id="player2_spawn" name="player2_spawn" value="i.e. P06" class="player_spawn"></div>
+            </div>
+
+            <div class="block half">
+              <label>Color:</label>
+              <div><input type="text" id="player2_color" name="player2_color" value="i.e. teal, etc." class="player_color"></div>
+            </div>
+          </div>
+
+        <div class="row">
+
+          <div class="block third">
+            <button onclick="subtract(player2Score)">-</button>
+          </div>
+
+          <div class="block third">
+            <input type="text" id="player2_score" name="player2_score" value="0" class="player_score">
+          </div>
+
+          <div class="block third">
+            <button onclick="add(player2Score)">+</button>
+          </div>
+
+        </div>
+
+        </fieldset>
+      </div>
+    </div>
+    <button id="save" onclick="save()">Save</button>
+  </div>
+
+<script>
+  // document.addEventListener("DOMContentLoaded", function(){
+    'use strict';
+      let matchInfo = nodecg.Replicant('matchInfo'),
+          player1Score = document.getElementById('player1_score'),
+          player2Score = document.getElementById('player2_score')
+
+      function getplayer1Info(){
+        return {
+          name: document.getElementById('player1_name').value,
+          spawn: document.getElementById('player1_spawn').value,
+          color: document.getElementById('player1_color').value,
+          score: document.getElementById('player1_score').value
+        }
+      }
+
+      function getplayer2Info(){
+        return {
+          name: document.getElementById('player2_name').value,
+          spawn: document.getElementById('player2_spawn').value,
+          color: document.getElementById('player2_color').value,
+          score: document.getElementById('player2_score').value,
+        }
+      }
+
+      function add(currentScore){
+        currentScore.value = parseInt(currentScore.value) + 1;
+      }
+
+      function subtract(currentScore){
+        currentScore.value = parseInt(currentScore.value) - 1;
+      }
+
+      function save(){
+        event.preventDefault();
+        matchInfo.value = {
+          player1: getplayer1Info(),
+          player2: getplayer2Info(),
+          round: document.getElementById('round').value,
+          map: document.getElementById('map').value,
+          series: document.getElementById('series').value
+        }
+        console.log(matchInfo)
+      }
+
+  // });
+</script>
+
+<style>
+  .panels {
+    display: flex;
+  }
+
+  .player {
+    width: 50%;
+  }
+
+  .player_name {
+    width: 96%;
+    border-radius: 1px;
+  }
+
+  .player_spawn {
+    width: 90%;
+  }
+
+  .player_color {
+    width: 90%;
+  }
+
+  .block {
+    display: inline-grid;
+  }
+
+  .full {
+    width: 100%;
+  }
+
+  .half {
+    max-width: 48%;
+    margin: auto;
+  }
+
+  .third {
+    width: 30%;
+  }
+
+  .row {
+    margin: 10px;
+  }
+
+  .inline {
+    display: inline-block;
+  }
+
+  .player_score {
+    width: 90%;
+    min-height: 60px;
+    text-align: center;
+  }
+
+  .center {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .small {
+    width: 30%;
+  }
+
+  #save {
+    width: 100%;
+    font-weight: bold;
+    height: 20px;
+    background-color: green;
+    color: white;
+  }
+</style>
+
+</body>
+</html>

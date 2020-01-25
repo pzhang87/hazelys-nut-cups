@@ -1,0 +1,42 @@
+{
+  "name": "hazely-nut-cups",
+  "version": "0.0.0",
+  "description": "BW Overlay for Hazely's Nut Cups",
+  "homepage": "",
+  "author": {
+    "name": "Peter Zhang",
+    "email": "pzhang87@gmail.com",
+    "url": ""
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "^1.1.1",
+    "dashboardPanels": [
+      {
+        "name": "scoreboard",
+        "title": "Scoreboard",
+        "width": 4,
+        "file": "scoreboard.html",
+        "headerColor": "#525F78"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "ingame.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  },
+  "repository": "https://github.com/nodecg/nodecg",
+  "license": "MIT"
+}
