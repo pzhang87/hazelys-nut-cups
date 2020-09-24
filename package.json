@@ -23,7 +23,7 @@
     "dashboardPanels": [
       {
         "name": "scoreboard",
-        "title": "Scoreboard",
+        "title": "Hazely's Nut Cups",
         "width": 4,
         "file": "scoreboard.html",
         "headerColor": "#525F78"
